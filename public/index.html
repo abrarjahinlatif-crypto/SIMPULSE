@@ -89,8 +89,58 @@ dialog::backdrop{background:rgba(23,23,23,.4)}
 .sec{background:none;border:1px solid var(--ln);border-radius:14px;padding:12px 18px;font-weight:700}
 .empty{color:var(--mu)}
 @media(max-width:1180px){.cols{grid-template-columns:1fr}.side{position:static;grid-template-columns:1fr 1fr}}
-@media(max-width:860px){.shell{grid-template-columns:1fr;padding:14px}.rail{display:none}.hero,.mon{grid-template-columns:1fr}.top{flex-wrap:wrap}.live{margin-left:0}}
-@media(max-width:560px){.side{grid-template-columns:1fr}.cr{grid-template-columns:90px 1fr 64px}.tiles{gap:8px}.tile b{font-size:20px}.card{padding:20px}}
+.brand{display:none}
+@media(max-width:860px){
+html,body{overflow-x:hidden}
+html{scroll-padding-top:76px}
+body{background-attachment:scroll}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:26;background:var(--card);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.shell{grid-template-columns:1fr;padding:0 14px calc(100px + env(safe-area-inset-bottom));gap:0}
+.shell>div{min-width:0}
+.rail{position:fixed;top:auto;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));flex-direction:row;justify-content:space-around;gap:2px;padding:8px;border-radius:30px;z-index:30;box-shadow:0 12px 40px rgba(23,23,23,.18),inset 0 1px 0 #fff}
+.rail .lg{display:none}
+.rail button{width:auto;flex:1;height:auto;min-height:54px;border-radius:22px;flex-direction:column;gap:3px;padding:8px 2px}
+.rail button::after{content:attr(data-l);font-size:10px;font-weight:700}
+.rail button.on{background:var(--ink);color:#fff}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:25;margin:0 -14px 16px;padding:10px 14px;background:var(--card);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--gb)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.03em}
+.lg2{width:36px;height:36px;border-radius:12px;background:var(--ink);display:grid;place-items:center}
+.pills{display:none}
+.live{margin-left:auto;padding:8px 12px;font-size:12px}
+.cols,.main{gap:16px}
+.card{padding:20px;border-radius:24px;-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%)}
+.card:hover{border-color:var(--gb);box-shadow:var(--sh)}
+.hero{grid-template-columns:1fr;gap:16px}
+.hero h1{font-size:32px}
+.hero .sub{margin:10px 0 20px;font-size:15px}
+.bv{font-size:36px}
+input[type=range]{height:10px}
+input[type=range]::-webkit-slider-thumb{width:30px;height:30px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);width:100%;overflow:visible}
+.seg button{padding:11px 2px;font-size:13px}
+.cta{width:100%;padding:16px}
+.dashbox{border-radius:30px;padding:6px}
+.feat{padding:22px;border-radius:24px;min-height:0}.feat .big{font-size:40px}
+.mon{grid-template-columns:1fr;gap:18px}
+.ctl{flex-direction:column;align-items:stretch}
+.ctl>div,.ctl select{width:100%}
+.ctl .cta{height:52px!important}
+.tiles{gap:8px}.tile{padding:12px}.tile b{font-size:21px}
+.gr{height:120px}
+.cr{grid-template-columns:96px 1fr 70px}
+.hot,.ops{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;scrollbar-width:none}
+.hot::-webkit-scrollbar,.ops::-webkit-scrollbar{display:none}
+.hot{margin:0 -20px;padding:2px 20px 8px}
+.ops{margin:0 -14px;padding:2px 14px 8px}
+.hot .hd{flex:0 0 72%;scroll-snap-align:start}
+.ops .op{flex:0 0 66%;scroll-snap-align:start}
+.pk{grid-template-columns:1fr;gap:14px}
+.side{position:static;grid-template-columns:1fr;gap:16px}
+.sh{margin-bottom:14px}.sh h2{font-size:19px}
+.li{padding:14px 0}
+dialog{width:calc(100% - 24px);max-width:none;margin:auto 12px calc(12px + env(safe-area-inset-bottom));border-radius:28px}
+}
+@media(max-width:400px){.hero h1{font-size:28px}.tile b{font-size:18px}.seg button{font-size:12px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -98,14 +148,14 @@ dialog::backdrop{background:rgba(23,23,23,.4)}
 <div class="shell">
 <nav class="rail glass" aria-label="Sections">
 <div class="lg" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E32636" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></div>
-<button class="on" data-s="ov" aria-label="Overview"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></button>
-<button data-s="fin" aria-label="Package Finder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></button>
-<button data-s="ops" aria-label="Compare"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M7 4L3 8M7 4l4 4M17 20V4M17 20l-4-4M17 20l4-4"/></svg></button>
-<button data-s="mon" aria-label="Network Monitor"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></button>
-<button data-s="st" aria-label="Settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></button>
+<button class="on" data-s="ov" aria-label="Overview" data-l="Home"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></button>
+<button data-s="fin" aria-label="Package Finder" data-l="Finder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></button>
+<button data-s="ops" aria-label="Compare" data-l="Compare"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M7 4L3 8M7 4l4 4M17 20V4M17 20l-4-4M17 20l4-4"/></svg></button>
+<button data-s="mon" aria-label="Network Monitor" data-l="Monitor"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></button>
+<button data-s="st" aria-label="Settings" data-l="Settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></button>
 </nav>
 <div>
-<div class="top"><div class="pills" role="tablist" aria-label="Main">
+<div class="top"><div class="brand"><span class="lg2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E32636" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></span>SIMPULSE</div><div class="pills" role="tablist" aria-label="Main">
 <button class="pill on" data-s="ov">Overview</button><button class="pill" data-s="fin">Package Finder</button><button class="pill" data-s="ops">Compare</button><button class="pill" data-s="mon">Network Monitor</button><button class="pill" data-s="st">Settings</button></div>
 <div class="live glass"><i></i><span id="lv">Live · 4G LTE</span></div></div>
 <div class="cols"><div class="main">
