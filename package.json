@@ -1,0 +1,14 @@
+{
+  "name": "simpulse",
+  "version": "1.0.0",
+  "description": "Find the best SIM deal in Bangladesh and test your network",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+  
+}

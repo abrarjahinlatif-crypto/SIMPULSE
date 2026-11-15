@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SIMPULSE — Your SIM. Your Budget. The Best Deal.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#171717;--mu:#6A6A72;--ac:#E32636;--acs:rgba(227,38,54,.09);--card:rgba(255,255,255,.66);--ln:rgba(23,23,23,.08);--gb:rgba(255,255,255,.92);--sh:0 10px 36px rgba(120,20,30,.09),inset 0 1px 0 #fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:500 16px/1.5 Inter,system-ui,sans-serif;min-height:100vh;background:radial-gradient(640px 440px at 90% -6%,rgba(227,38,54,.20),transparent 62%),radial-gradient(520px 420px at -6% 44%,rgba(227,38,54,.12),transparent 62%),radial-gradient(520px 400px at 70% 98%,rgba(227,38,54,.12),transparent 62%),linear-gradient(rgba(23,23,23,.035) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(23,23,23,.035) 1px,transparent 1px) 0 0/44px 44px,#fff;background-attachment:fixed}
+h1,h2,h3{margin:0;letter-spacing:-.03em;line-height:1.1}p{margin:0;color:var(--mu)}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px;border-radius:12px}
+.shell{display:grid;grid-template-columns:84px 1fr;gap:20px;max-width:1500px;margin:0 auto;padding:20px}
+.glass{background:var(--card);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--gb);box-shadow:var(--sh)}
+.rail{position:sticky;top:20px;align-self:start;border-radius:42px;display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px 0}
+.rail button{width:48px;height:48px;border-radius:50%;border:0;background:none;color:var(--mu);display:grid;place-items:center;transition:background .2s,color .2s}
+.rail button:hover{background:var(--acs);color:var(--ac)}.rail button.on{background:var(--ink);color:#fff}
+.lg{width:48px;height:48px;border-radius:16px;background:var(--ink);display:grid;place-items:center;margin-bottom:10px}
+.top{display:flex;gap:10px;align-items:center;margin-bottom:20px}
+.pills{display:flex;gap:8px;overflow-x:auto;padding:4px 2px}
+.pill{border:1px solid var(--gb);background:var(--card);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-radius:999px;padding:12px 22px;font-weight:600;color:var(--mu);white-space:nowrap;transition:all .2s}
+.pill:hover{color:var(--ink)}.pill.on{background:var(--ac);color:#fff;box-shadow:0 8px 22px rgba(227,38,54,.32)}
+.live{margin-left:auto;display:flex;align-items:center;gap:8px;border-radius:999px;padding:10px 16px;font-size:13px;font-weight:700;white-space:nowrap}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 0 rgba(227,38,54,.5);animation:pu 2s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 10px rgba(227,38,54,0)}}
+.cols{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}
+.main{display:grid;gap:20px;min-width:0}
+.card{border-radius:28px;padding:26px;transition:border-color .25s,box-shadow .25s,transform .25s}
+.card:hover{border-color:rgba(227,38,54,.55);box-shadow:0 0 0 1px rgba(227,38,54,.22),0 14px 44px rgba(227,38,54,.16)}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:18px}.sh h2{font-size:21px;font-weight:800}.sh p{font-size:13px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.hero h1{font-size:clamp(32px,4vw,52px);font-weight:800}.hero h1 span{color:var(--ac)}
+.hero .sub{margin:14px 0 24px;max-width:440px}
+.lbl{font-size:12px;font-weight:700;color:var(--mu);letter-spacing:.04em;text-transform:uppercase}
+.bv{font-size:40px;font-weight:800;letter-spacing:-.03em;margin:4px 0 12px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;outline-offset:8px;background:linear-gradient(90deg,var(--ac) var(--pct,40%),rgba(23,23,23,.1) 0)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:6px solid var(--ac);box-shadow:0 0 0 6px rgba(227,38,54,.18),0 4px 14px rgba(227,38,54,.5);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:6px solid var(--ac);box-shadow:0 0 0 6px rgba(227,38,54,.18),0 4px 14px rgba(227,38,54,.5);cursor:pointer}
+.scale{display:flex;justify-content:space-between;font-size:12px;color:var(--mu);margin:10px 0 20px}
+.seg{display:flex;gap:6px;background:rgba(23,23,23,.05);border-radius:999px;padding:4px;width:fit-content;max-width:100%;overflow-x:auto;margin-bottom:22px}
+.seg button{border:0;background:none;border-radius:999px;padding:9px 18px;font-weight:700;color:var(--mu);white-space:nowrap}.seg button.on{background:var(--ink);color:#fff}
+.cta{border:0;background:var(--ac);color:#fff;border-radius:16px;padding:16px 28px;font-weight:800;font-size:16px;box-shadow:0 10px 28px rgba(227,38,54,.38);transition:transform .2s}
+.cta:hover{transform:translateY(-2px)}
+.dashbox{border:1.5px dashed rgba(23,23,23,.22);border-radius:36px;padding:8px}
+.feat{border-radius:28px;padding:26px;color:#fff;min-height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:20px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 6px,transparent 6px 14px),linear-gradient(145deg,#F24857,#E32636 55%,#C61828);box-shadow:0 18px 40px rgba(227,38,54,.35)}
+.feat p{color:rgba(255,255,255,.85)}.feat .big{font-size:48px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.chip{display:inline-block;background:rgba(255,255,255,.22);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+.fr{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.go{width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;border:0;display:grid;place-items:center;font-size:18px;flex:none;transition:transform .2s}.go:hover{transform:scale(1.08)}
+.feat .go{background:#fff;color:var(--ink)}
+.hot{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.hd{border:1.5px dashed rgba(23,23,23,.2);background:rgba(255,255,255,.5);border-radius:22px;padding:16px;display:grid;gap:4px;text-align:left;transition:all .2s}
+.hd:hover{border-color:var(--ac);transform:translateY(-3px);background:#fff}
+.hd .t{font-size:11px;font-weight:800;color:var(--ac);letter-spacing:.04em;text-transform:uppercase}.hd .p{font-size:22px;font-weight:800;letter-spacing:-.02em}.hd span{font-size:13px;color:var(--mu)}
+.mon{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ctl{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:18px}
+.ctl label{display:block;margin-bottom:6px}
+select,input[type=text]{height:48px;border:1px solid var(--ln);border-radius:14px;background:rgba(255,255,255,.8);padding:0 14px;min-width:160px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile{background:rgba(255,255,255,.7);border:1px solid var(--ln);border-radius:20px;padding:14px 16px}
+.tile b{display:block;font-size:26px;letter-spacing:-.03em;line-height:1.1;margin-top:4px}.tile small{font-size:13px;color:var(--mu);font-weight:600}
+.info{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.pl{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.7);border:1px solid var(--ln);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700}
+.sig{display:inline-flex;align-items:end;gap:3px;height:16px}.sig i{width:5px;border-radius:2px;background:rgba(23,23,23,.15)}.sig i.on{background:var(--ac)}
+.gr{display:flex;align-items:end;gap:8px;height:170px;margin-top:6px}.gr i{flex:1;border-radius:99px;min-height:14px;transition:height .6s cubic-bezier(.2,.7,.2,1)}
+.cmp{display:grid;gap:8px;margin-top:14px}.cr{display:grid;grid-template-columns:110px 1fr 80px;gap:10px;align-items:center;font-size:13px;font-weight:600}
+.bar{height:7px;background:rgba(23,23,23,.08);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac);border-radius:9px;transition:width .6s}
+.note{font-size:12px;color:var(--mu);margin-top:12px}
+.badge{font-size:10px;font-weight:800;background:var(--ac);color:#fff;padding:3px 9px;border-radius:99px;letter-spacing:.04em;margin-left:6px;vertical-align:middle}
+.ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.op{padding:20px;display:grid;gap:10px}
+.op .h{display:flex;justify-content:space-between;align-items:center;color:var(--ac)}
+.op h3{font-size:17px;font-weight:800}.op p{font-size:13px}
+.dot{width:36px;height:36px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.pc{padding:22px;display:grid;gap:14px}
+.pc .hd2{display:flex;justify-content:space-between;align-items:center;gap:8px}.pc .nm{display:flex;gap:10px;align-items:center;font-weight:700}
+.pc .pr{font-size:34px;font-weight:800;letter-spacing:-.04em}.pc .pr small{font-size:15px;color:var(--mu);font-weight:600;letter-spacing:0}
+.pc dl{margin:0;display:grid;gap:8px}.pc dl div{display:flex;justify-content:space-between;font-size:14px;border-bottom:1px solid var(--ln);padding-bottom:8px}.pc dt{color:var(--mu)}.pc dd{margin:0;font-weight:700}
+.pc.top1{border-color:rgba(227,38,54,.5)}
+.vp{border:0;background:var(--ink);color:#fff;border-radius:14px;padding:13px;font-weight:700;transition:background .2s}.vp:hover{background:var(--ac)}
+.side{display:grid;gap:20px;position:sticky;top:20px}
+.li{display:flex;align-items:center;gap:12px;width:100%;background:none;border:0;border-bottom:1px solid var(--ln);padding:12px 0;text-align:left}.li:last-child{border:0;padding-bottom:0}
+.li .n{font-weight:800;color:var(--mu);width:16px}.li .dot{width:30px;height:30px;border-radius:10px;font-size:11px}.li div{flex:1;min-width:0}.li b{display:block;font-size:15px}.li span{font-size:12px;color:var(--mu)}
+dialog{border:1px solid var(--gb);border-radius:28px;background:var(--card);-webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);color:var(--ink);max-width:380px;padding:26px;box-shadow:var(--sh)}
+dialog::backdrop{background:rgba(23,23,23,.4)}
+.sec{background:none;border:1px solid var(--ln);border-radius:14px;padding:12px 18px;font-weight:700}
+.empty{color:var(--mu)}
+@media(max-width:1180px){.cols{grid-template-columns:1fr}.side{position:static;grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.shell{grid-template-columns:1fr;padding:14px}.rail{display:none}.hero,.mon{grid-template-columns:1fr}.top{flex-wrap:wrap}.live{margin-left:0}}
+@media(max-width:560px){.side{grid-template-columns:1fr}.cr{grid-template-columns:90px 1fr 64px}.tiles{gap:8px}.tile b{font-size:20px}.card{padding:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="rail glass" aria-label="Sections">
+<div class="lg" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E32636" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></div>
+<button class="on" data-s="ov" aria-label="Overview"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></button>
+<button data-s="fin" aria-label="Package Finder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></button>
+<button data-s="ops" aria-label="Compare"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M7 4L3 8M7 4l4 4M17 20V4M17 20l-4-4M17 20l4-4"/></svg></button>
+<button data-s="mon" aria-label="Network Monitor"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></button>
+<button data-s="st" aria-label="Settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></button>
+</nav>
+<div>
+<div class="top"><div class="pills" role="tablist" aria-label="Main">
+<button class="pill on" data-s="ov">Overview</button><button class="pill" data-s="fin">Package Finder</button><button class="pill" data-s="ops">Compare</button><button class="pill" data-s="mon">Network Monitor</button><button class="pill" data-s="st">Settings</button></div>
+<div class="live glass"><i></i><span id="lv">Live · 4G LTE</span></div></div>
+<div class="cols"><div class="main">
+
+<section id="ov" class="hero">
+<div class="card glass" id="fin"><h1>Your SIM. Your Budget. <span>The Best Deal.</span></h1>
+<p class="sub">Discover the smartest mobile packages and understand your network performance.</p>
+<div class="lbl">Monthly budget</div><div class="bv" id="bv">৳500</div>
+<input type="range" id="bs" min="30" max="1000" step="10" value="500" aria-label="Monthly budget in taka"><div class="scale"><span>৳30</span><span>৳500</span><span>৳1000</span></div>
+<div class="seg" id="seg" role="group" aria-label="Package type"></div>
+<button class="cta" id="find">Find My Best Deal</button>
+<p class="note">Sample data. Prices are not live.</p></div>
+<div class="dashbox"><div class="feat" id="feat"></div></div>
+</section>
+
+<section class="card glass"><div class="sh"><h2>Hot deals</h2><p>New this week</p></div><div class="hot" id="hot"></div></section>
+
+<section id="mon" class="card glass"><div class="sh"><h2>Network Monitor</h2><p id="ms">Test each SIM, then compare</p></div>
+<div class="mon"><div>
+<div class="ctl"><div><label class="lbl" for="sim">Current operator</label><select id="sim"></select></div><button class="cta" id="run" style="height:48px;padding:0 22px">Run Speed Test</button></div>
+<div class="tiles"><div class="tile"><small>Download</small><b id="dl">—</b></div><div class="tile"><small>Upload</small><b id="ul">—</b></div><div class="tile"><small>Ping</small><b id="pg">—</b></div></div>
+<div class="info"><span class="pl">Signal <span class="sig" id="sg"><i style="height:5px"></i><i style="height:8px"></i><i style="height:12px"></i><i style="height:16px"></i></span> <span id="sl">—</span></span><span class="pl" id="nt">4G LTE</span></div></div>
+<div><div class="lbl">Throughput</div><div class="gr" id="gr" role="img" aria-label="Network throughput graph"></div></div></div>
+<div class="cmp" id="cmp"></div><p class="note" id="nn">Pick the SIM in your phone, run the test, then repeat with your other SIMs to see which is fastest where you are.</p></section>
+
+<section id="ops"><div class="sh"><h2>Operator comparison</h2><p>Packages tracked per operator</p></div><div class="ops" id="opl"></div></section>
+
+<section id="pk"><div class="sh"><h2 id="pt">Best packages for ৳500</h2><p>One best pack per operator</p></div><div class="pk" id="pkl"></div></section>
+
+<section id="st" class="card glass"><div class="sh"><h2>Settings</h2><p>For developers</p></div>
+<p class="note">Speed tests run against this server’s built-in endpoints, so results show the path between your phone and the server on each SIM. Compare SIMs by testing them one after another from the same spot.</p></section>
+</div>
+
+<aside class="side">
+<section class="card glass"><div class="sh"><h2>Trending</h2></div><div id="tr"></div></section>
+<section class="card glass"><div class="sh"><h2>Best deals</h2></div><div id="bd"></div></section>
+</aside></div></div></div>
+
+<dialog id="dg"><h3 id="dt"></h3><p id="dp" style="margin:10px 0 20px"></p><div style="display:flex;gap:10px"><a class="cta" id="dl2" href="#" style="text-decoration:none;font-size:15px;padding:13px 22px">Continue</a><button class="sec" id="dx">Cancel</button></div></dialog>
+
+<script>
+var OPS={gp:{n:'Grameenphone',s:'GP'},robi:{n:'Robi',s:'Rb'},bl:{n:'Banglalink',s:'BL'},tt:{n:'Teletalk',s:'Tt'},sk:{n:'Skitto',s:'Sk'}};
+/* op, type(i/m/c/t), price, GB, minutes, days, hot, views, credit */
+var P=[['tt','i',30,2,0,3,1,940],['gp','i',30,1,0,3,0,1220],['robi','i',30,1,0,3,0,860],['bl','i',29,1.5,0,3,1,1010],['sk','i',31,1.5,0,3,0,540],
+['tt','i',98,6,50,7,1,700],['gp','i',97,4,0,7,0,1500],['robi','i',99,5,0,7,1,1130],['bl','i',98,5,30,7,0,980],['sk','i',99,5,0,7,0,610],
+['tt','i',199,15,100,30,0,520],['gp','i',298,16,0,30,0,1340],['robi','i',299,20,0,30,1,1210],['bl','i',298,18,50,30,0,890],['sk','i',299,20,0,30,0,470],
+['tt','i',449,40,200,30,1,880],['gp','i',498,30,300,30,0,1710],['robi','i',499,35,200,30,0,1290],['bl','i',495,32,250,30,1,940],['sk','i',499,38,0,30,0,520],
+['tt','m',29,0,60,3,0,300],['gp','m',30,0,50,3,0,620],['robi','m',29,0,55,3,0,410],['bl','m',30,0,50,3,0,380],
+['tt','m',45,0,150,7,1,450],['gp','m',49,0,100,7,0,700],['robi','m',47,0,120,7,0,520],['bl','m',48,0,110,7,1,480],['sk','m',49,0,100,7,0,240],
+['tt','m',249,0,800,30,0,360],['gp','m',299,0,700,30,0,640],['robi','m',289,0,750,30,1,430],['bl','m',299,0,720,30,0,350],
+['gp','c',149,6,100,7,0,880],['robi','c',148,7,120,7,1,760],['bl','c',149,6,150,7,0,540],['tt','c',129,8,100,7,1,610],['sk','c',149,7,100,7,0,330],
+['gp','c',399,20,400,30,0,560],['robi','c',398,22,350,30,0,470],['tt','c',349,24,300,30,1,520],
+['tt','t',50,0,0,0,0,260,56],['gp','t',50,0,0,0,0,390,52],['robi','t',50,0,0,0,0,310,54],['bl','t',50,0,0,0,0,290,55],['sk','t',50,0,0,0,0,150,54],['tt','t',100,0,0,0,1,420,112],['gp','t',100,0,0,0,0,510,105]];
+var PACKS=P.map(function(a,i){return{id:i,op:a[0],t:a[1],p:a[2],gb:a[3],m:a[4],d:a[5],hot:a[6],v:a[7],cr:a[8]||0}});
+function fetchDeals(){return Promise.resolve(PACKS)} /* later: fetch('/api/deals') */
+var TYPE='i',B=500,SM={i:'Data',m:'Minutes',c:'Both',t:'Talktime'},$=function(i){return document.getElementById(i)};
+function fmt(g){return (g%1?g.toFixed(1):g)+' GB'}
+function sc(x){return x.t==='m'?x.m:x.t==='c'?x.gb*1000+x.m:x.t==='t'?x.cr/x.p:x.gb}
+function cpg(x){return x.t==='m'?x.p/x.m:x.t==='t'?x.p/x.cr:x.p/x.gb}
+function head(x){return x.t==='m'?x.m+' min':x.t==='c'?fmt(x.gb)+' + '+x.m+' min':x.t==='t'?'৳'+x.cr+' talktime':fmt(x.gb)}
+function unit(x){return x.t==='m'?'৳'+cpg(x).toFixed(2)+' per min':x.t==='t'?'+'+Math.round((x.cr/x.p-1)*100)+'% bonus':x.t==='c'?'Data first, then minutes':'৳'+cpg(x).toFixed(1)+' per GB'}
+function best(b){var by={};PACKS.forEach(function(x){if(x.t!==TYPE||x.p>b)return;var c=by[x.op];if(!c||sc(x)>sc(c)||(sc(x)===sc(c)&&x.p<c.p))by[x.op]=x});return Object.keys(by).map(function(k){return by[k]}).sort(function(a,b){return sc(b)-sc(a)||a.p-b.p})}
+function dot(o){return '<div class="dot">'+OPS[o].s+'</div>'}
+function rows(x){var f=x.t==='t'?[['You pay','৳'+x.p],['You get','৳'+x.cr],['Bonus','+'+Math.round((x.cr/x.p-1)*100)+'%']]:[['Internet',x.gb?fmt(x.gb):'—'],['Minutes',x.m?x.m+' min':'—'],['Validity',x.d+' days'],[x.m&&!x.gb?'Price / min':'Price / GB',x.gb?'৳'+(x.p/x.gb).toFixed(1):'৳'+(x.p/x.m).toFixed(2)]];return '<dl>'+f.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('')+'</dl>'}
+function mini(x,i,s){return '<button class="li" data-buy="'+x.id+'"><span class="n">'+(i+1)+'</span>'+dot(x.op)+'<div><b>'+head(x)+' · ৳'+x.p+'</b><span>'+OPS[x.op].n+' · '+s+'</span></div></button>'}
+function render(){
+ var r=best(B),top=r[0];
+ $('bv').textContent='৳'+B;$('bs').style.setProperty('--pct',((B-30)/970*100)+'%');$('pt').textContent='Best '+SM[TYPE].toLowerCase()+' packages for ৳'+B;
+ $('feat').innerHTML=top?'<div><span class="chip">BEST PICK · '+SM[TYPE].toUpperCase()+'</span><p style="margin-top:18px">'+OPS[top.op].n+'</p><div class="big">'+head(top)+'</div></div><div class="fr"><div><p>৳'+top.p+(top.t==='t'?'':' · '+top.d+' days')+'</p><p>'+unit(top)+'</p></div><button class="go" data-buy="'+top.id+'" aria-label="View best package">↗</button></div>':'<div><span class="chip">NO MATCH</span><p style="margin-top:18px">No package fits ৳'+B+' yet. Try a higher budget.</p></div>';
+ $('pkl').innerHTML=r.length?r.map(function(x,i){return '<article class="card glass pc'+(i?'':' top1')+'"><div class="hd2"><div class="nm">'+dot(x.op)+OPS[x.op].n+'</div>'+(i?'':'<span class="badge" style="margin:0">BEST VALUE</span>')+'</div><div class="pr">৳'+x.p+' <small>'+head(x)+'</small></div>'+rows(x)+'<button class="vp" data-buy="'+x.id+'">View Package</button></article>'}).join(''):'<p class="empty">No packages at this budget.</p>';
+ $('tr').innerHTML=PACKS.slice().sort(function(a,b){return b.v-a.v}).slice(0,5).map(function(x,i){return mini(x,i,x.v.toLocaleString('en-US')+' views today')}).join('');
+ $('bd').innerHTML=PACKS.filter(function(x){return x.t===TYPE}).sort(function(a,b){return cpg(a)-cpg(b)}).slice(0,5).map(function(x,i){return mini(x,i,unit(x))}).join('');
+}
+function once(){
+ $('hot').innerHTML=PACKS.filter(function(x){return x.hot}).slice(0,6).map(function(x){return '<button class="hd" data-buy="'+x.id+'"><span class="t">Hot · '+SM[x.t]+' · '+OPS[x.op].n+'</span><span class="p">'+head(x)+'</span><span>৳'+x.p+(x.t==='t'?'':' · '+x.d+' days')+'</span></button>'}).join('');
+ var bp={};Object.keys(OPS).forEach(function(k){var l=PACKS.filter(function(x){return x.op===k&&x.t==='i'}).map(function(x){return x.p/x.gb});bp[k]=Math.min.apply(null,l)});
+ var win=Object.keys(bp).sort(function(a,b){return bp[a]-bp[b]})[0];
+ $('opl').innerHTML=Object.keys(OPS).map(function(k){return '<article class="card glass op"><div class="h">'+dot(k)+'<svg width="38" height="38" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 24a14 14 0 0 1 28 0"/><path d="M12 24a8 8 0 0 1 16 0"/><circle cx="20" cy="29" r="2.6" fill="currentColor"/></svg></div><h3>'+OPS[k].n+(k===win?'<span class="badge">BEST VALUE</span>':'')+'</h3><p>'+PACKS.filter(function(x){return x.op===k}).length+' packages · from ৳'+bp[k].toFixed(1)+'/GB</p></article>'}).join('');
+ $('seg').innerHTML=Object.keys(SM).map(function(k){return '<button data-ty="'+k+'">'+SM[k]+'</button>'}).join('');
+ $('sim').innerHTML=Object.keys(OPS).map(function(k){return '<option value="'+k+'">'+OPS[k].n+'</option>'}).join('');
+}
+function seg(){document.querySelectorAll('#seg button').forEach(function(b){b.classList.toggle('on',b.dataset.ty===TYPE)})}
+$('seg').onclick=function(e){var b=e.target.closest('button');if(b){TYPE=b.dataset.ty;seg();render()}};
+$('bs').oninput=function(){B=+this.value;render()};
+$('find').onclick=function(){render();$('pk').scrollIntoView({behavior:'smooth'})};
+document.querySelectorAll('[data-s]').forEach(function(b){b.onclick=function(){document.querySelectorAll('[data-s]').forEach(function(o){o.classList.toggle('on',o.dataset.s===b.dataset.s)});$(b.dataset.s).scrollIntoView({behavior:'smooth'})}});
+document.addEventListener('click',function(e){var t=e.target.closest('[data-buy]');if(!t)return;var x=PACKS[+t.dataset.buy];$('dt').textContent=head(x)+' for ৳'+x.p;$('dp').textContent='You’ll continue to '+OPS[x.op].n+'’s official checkout to complete this purchase. (Demo: link not connected yet.)';$('dg').showModal();fetch('/api/view/'+x.id,{method:'POST'}).catch(function(){})});
+$('dx').onclick=function(){$('dg').close()};
+/* NETWORK MONITOR */
+var res={},S=[];for(var i=0;i<14;i++)S.push(30+Math.random()*45);
+var cn=navigator.connection&&navigator.connection.effectiveType;if(cn){var nt=cn==='4g'?'4G LTE':cn.toUpperCase();$('nt').textContent=nt;$('lv').textContent='Live · '+nt}
+function gr(){var g=$('gr');if(!g.children.length)g.innerHTML=S.map(function(){return '<i></i>'}).join('');[].forEach.call(g.children,function(e,i){e.style.height=S[i]+'%';e.style.background=i%3===0?'#171717':i%3===1?'#E32636':'rgba(23,23,23,.14)'})}
+function cl(v,a,b){return Math.max(a,Math.min(b,v))}
+async function measure(){
+ try{
+  var pings=[];
+  for(var i=0;i<4;i++){var t=performance.now();var pr=await fetch('/api/ping',{cache:'no-store'});if(!pr.ok)throw 0;pings.push(performance.now()-t)}
+  var ping=Math.round(Math.min.apply(null,pings));
+  var t1=performance.now(),r=await fetch('/api/speedtest/down?bytes=8000000&r='+Math.random(),{cache:'no-store'}),buf=await r.arrayBuffer();
+  var dl=+(buf.byteLength*8/1e6/((performance.now()-t1)/1000)).toFixed(1);
+  var blob=new Uint8Array(2000000),t2=performance.now();
+  await fetch('/api/speedtest/up',{method:'POST',body:blob,headers:{'Content-Type':'application/octet-stream'}});
+  var ul=+(blob.length*8/1e6/((performance.now()-t2)/1000)).toFixed(1);
+  return {dl:dl,ul:ul,ping:ping};
+ }catch(e){return {demo:1,dl:+(2+Math.random()*38).toFixed(1),ul:+(1+Math.random()*14).toFixed(1),ping:Math.round(25+Math.random()*90)}}
+}
+function show(r){$('dl').textContent=r.dl+' Mbps';$('ul').textContent=r.ul==null?'—':r.ul+' Mbps';$('pg').textContent=r.ping+' ms';
+ var n=r.dl>=20?4:r.dl>=10?3:r.dl>=4?2:1;[].forEach.call($('sg').children,function(e,i){e.className=i<n?'on':''});$('sl').textContent=['','Weak','Fair','Good','Excellent'][n]}
+function cmp(){var ks=Object.keys(res).sort(function(a,b){return res[b].dl-res[a].dl});if(!ks.length)return;var mx=res[ks[0]].dl;
+ $('cmp').innerHTML=ks.map(function(k,i){return '<div class="cr"><span>'+OPS[k].n+(i?'':'<span class="badge">FASTEST</span>')+'</span><div class="bar"><i style="width:'+(res[k].dl/mx*100)+'%"></i></div><b>'+res[k].dl+' Mbps</b></div>'}).join('');
+ if(ks.some(function(k){return res[k].demo}))$('nn').textContent='Demo values shown because the server could not be reached.'}
+$('run').onclick=function(){var b=$('run'),n=0;b.disabled=true;b.textContent='Testing…';
+ var iv=setInterval(function(){S.shift();S.push(20+Math.random()*75);gr();if(++n>14)clearInterval(iv)},150);
+ measure().then(function(r){setTimeout(function(){b.disabled=false;b.textContent='Run Speed Test';clearInterval(iv);if(!r){$('nn').textContent='Test failed. Check your connection and try again.';return}
+  res[$('sim').value]=r;show(r);S=S.map(function(){return cl(r.dl/40*100*(.7+Math.random()*.5),14,98)});gr();cmp()},2200)})};
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(function(){if($('run').disabled)return;S.shift();S.push(cl(S[S.length-1]+(Math.random()-.5)*26,18,92));gr()},1800);
+function boot(){once();seg();render()}
+boot();gr();
+fetch('/api/packs').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){if(d.length){PACKS=d;var s=$('sim').value;boot();$('sim').value=s}}).catch(function(){});
+</script>
+</body>
+</html>
